@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopwatch</title>
+    <link rel="stylesheet" href="stopwatch.css">
+</head>
+<body>
+    <iframe
+  src="https://meet.jit.si/YourRoomName"
+  style="width: 100%; height: 500px; border: 0;">
+</iframe>
+    <main>
+        
+        <div class="stopwatch">
+            <h1 style="color:white;font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif ;text-align: center;">Stopwatch</h1>
+            <div class="time">0</div>
+            <div class="buttons">
+                <button class="btn" id="start" >start</button>
+                <button class="btn" id="stop">stop</button>
+                <button class="btn" id="reset">reset</button>
+                <button class="btn" id="getTime">getTime</button>
+                <button class="btn" id="clearTime">clearTime</button>
+            </div>
+            <div class="result"></div>
+        </div>
+    </main>
+    <script>
+        const time = document.querySelector('.time')
+        let count=1;
+        let intervalId;
+        const startTime=()=>{
+              intervalId= setInterval(()=>{ 
+              time.innerText=count++;},1000);    
+        } 
+      
+
+        const stopTime=()=>{
+           clearInterval(intervalId);
+           
+       } 
+         
+       const resetTime=()=>{
+            stopTime();
+            count=1;
+            time.innerText=0;
+       }
+       const getTime=()=>{
+            const pp= document.createElement("p");
+            pp.innerText=`${count-1} seconds`;
+            result.append(pp);  
+            console.log(pp);  
+       }
+       const clearTime=()=>{
+           // const pp = document.querySelectorAll("p");
+           // pp.forEach(p => p.remove()); 
+           result.innerHTML="";
+       }
+       const startT=document.querySelector("#start")
+       const stopT=document.querySelector("#stop");
+       const resetT=document.querySelector("#reset");
+       const getT=document.querySelector("#getTime");
+       const clearT=document.querySelector("#clearTime");
+       const result=document.querySelector(".result");
+
+       stopT.addEventListener('click',stopTime);
+       startT.addEventListener('click',startTime);
+       resetT.addEventListener('click',resetTime);
+       getT.addEventListener('click',getTime);
+       clearT.addEventListener('click',clearTime);     
+    </script>
+</body>
+</html>
