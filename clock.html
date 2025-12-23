@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>clock</title>
+    <link rel="stylesheet" href="clock.css">
+</head>
+<body>
+    <main>
+
+        <div class="clock">
+            <div class="time"></div>
+            <div>
+                <button class="stopwatch" onclick="window.open('stopwatch.html', '_self')">stopwatch</button>
+            </div>
+        </div>
+    </main>
+    <script>
+        const time =document.querySelector('.time');
+         
+        const realtime=()=>{
+            const date = new Date();
+            time.innerText=date.toLocaleTimeString();
+        }
+        realtime();  
+        setInterval(realtime,1000);
+
+    </script>
+</body>
+</html>
